@@ -7,3 +7,4 @@ class InitDB(Command):
 
     def run(self):
         db.create_all()
+        

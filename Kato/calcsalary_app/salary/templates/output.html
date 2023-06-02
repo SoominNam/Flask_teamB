@@ -1,0 +1,11 @@
+{% extends "layout.html" %}
+{% block body %}
+    <p>
+       給与:{{ '{:,.0f}'.format(salary) }}円の場合、支給額:{{ '{:,.0f}'.format(expenses) }}、税額:{{ '{:,.0f}'.format(tax) }}円です。
+    </p>
+    <form action="/" method=post>
+        <div class="form-group">
+            <button type="number" class="btn btn-primary">戻る</button>
+        </div>
+    </form>
+{% endblock %}

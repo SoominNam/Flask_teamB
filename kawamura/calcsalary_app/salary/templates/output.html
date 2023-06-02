@@ -11,7 +11,7 @@
     <form action="{{url_for('login')}}" method=post>
         <div class="form-group">
             <label for="InputTitle">給与計算</label>
-            <p>給料: {{ kyuyo }}、支給額{{ result }}、税額{{ zei }}</p>
+            <p>給料: {{ kyuyo }}、支給額: {{ result }}、税額: {{ zei }}です。</p>
         </div>
         <a  class="btn btn-primary" href="{{url_for('show_entries')}}">戻る</a>
     </form>

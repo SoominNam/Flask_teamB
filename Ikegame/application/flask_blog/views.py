@@ -27,4 +27,4 @@ def login():
 def logout():
     flash("ログアウトしました")
     session.pop("logged_in", None)
-    return redirect(url_for("show_entries"))
+    return redirect(url_for())

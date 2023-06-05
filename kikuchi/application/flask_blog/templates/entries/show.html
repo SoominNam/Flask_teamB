@@ -10,6 +10,11 @@
         <button type="submit" class="btn btn-secondary">編集</button>
     </form>
 </div>
+<div class="btn-group">
+    <form action="{{url_for('delete_entry', id=entry.id)}}" method="post">
+        <button type="submit" class="btn btn-danger" style="margin-left: 5px;">削除</button>
+    </form>
+</div>
 投稿日時 {{entry.created_at}}
 
 {% endblock %}

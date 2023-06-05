@@ -13,7 +13,7 @@
 <body>
     <div class="container">
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
-            <a class="navbar-brand" href="{{ url_for('index') }}">祝日マスタ管理</a>
+            <a class="navbar-brand" href="{{ url_for('input') }}">祝日マスタ管理</a>
         </nav>
         {% for message in get_flashed_messages() %}
             <div class="alert alert-info" role="alert">

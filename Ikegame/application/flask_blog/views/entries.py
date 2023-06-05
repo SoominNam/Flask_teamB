@@ -28,3 +28,39 @@ def add_entry():
     db.session.commit()
     flash("新規投稿成功")
     return redirect(url_for("show_entries"))
+
+@app.route("/entries/<int:id>",methods=["GET"])
+def show_entry(id):
+    if not session.get("logged_in"):
+        return redirect(url_for('login'))
+    entry = Entry.query.get(id)
+    return render_template("entries/show.html",entry=entry)
+
+@app.route("/entries/<int:id>/edit",methods=["GET"])
+def edit_entry(id):
+    if not session.get("logged_in"):
+        return redirect(url_for("login"))
+    entry = Entry.query.get(id)
+    return render_template("entries/edit.html",entry=entry)
+
+@app.route("/entries/<int:id>/update",methods=["POST"])
+def update_entry(id):
+    if not session.get("logged_in"):
+        return redirect(url_for("login"))
+    entry = Entry.query.get(id)
+    entry.title = request.form["title"]
+    entry.text = request.form["text"]
+    db.session.merge(entry)
+    db.session.commit()
+    flash("更新成功")
+    return redirect(url_for("show_entries"))
+
+@app.route('/entries/<int:id>/delete',methods=["POST"])
+def delete_entry(id):
+    if not session.get("logged_in"):
+        return redirect(url_for("login"))
+    entry = Entry.query.get(id)
+    db.session.delete(entry)
+    db.session.commit()
+    flash("削除成功")
+    return redirect(url_for("show_entries"))

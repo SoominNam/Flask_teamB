@@ -2,7 +2,7 @@ from holiday import db
 from datetime import datetime
 
 class Holiday(db.Model):
-    __tablename__ = 'holidays'
+    __tablename__ = 'holiday'
     holi_date = db.Column(db.Date, primary_key=True)
     holi_text = db.Column(db.String(20))
 
@@ -11,4 +11,4 @@ class Holiday(db.Model):
         self.holi_text = holi_text
 
     def __repr__(self):
-        return '<holi_date:{} holi_text:{}>'.format(self.holi_date, self.holi_text)
+        return '<Holiday holi_date:{} holi_text:{}>'.format(self.holi_date, self.holi_text)

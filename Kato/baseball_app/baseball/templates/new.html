@@ -1,0 +1,25 @@
+{% extends "layout.html" %}
+{% block body %}
+    <form action="{{ url_for('add_player') }}" method=post>
+        <div class="form-group">
+            <label for="PlayerName">名前</label>
+            <input type="text" class="form-control" id="PlayerName" name="name">
+        </div>
+
+        <div class="form-group">
+            <label for="Number">背番号</label>
+            <input type="number" class="form-control" id="PlayerNumber" name="number">
+        </div>
+
+        <div class="form-group">
+            <label for="InputText">詳細</label>
+            <textarea class="form-control" id="InputText" name=text rows="3"></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary" name="button" value="add" style="float: right;">登録</button>
+    </form>
+    <form action="{{ url_for('main') }}" method=post>
+        <div class="form-group">
+            <button type="number" class="btn btn-secondary">検索ページに戻る</button>
+        </div>
+    </form>
+{% endblock %}

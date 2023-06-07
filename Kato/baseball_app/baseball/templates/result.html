@@ -1,0 +1,14 @@
+{% extends "layout.html" %}
+{% block body %}
+
+    <h2>{{ name }}</h2>
+    <p>
+        {{ text }}
+    </p>
+
+    <form action="{{ url_for('main') }}" method=post>
+        <div class="form-group">
+            <button type="number" class="btn btn-primary">戻る</button>
+        </div>
+    </form>
+{% endblock %}

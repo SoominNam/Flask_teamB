@@ -11,18 +11,33 @@
     <!-- 自作css,js 読み込み -->
     <link rel="stylesheet" href="/">
     <script src="static/js/game.js"></script>
+    {% block head %}
+    {% endblock %}
 </head>
 <body>
     <div class="container">
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
             <a class="navbar-brand" href="{{ url_for('index') }}">みにげーむ</a>
+            <button class="navbar-toggler" type="button" data-toggele="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <ul class="nav navbar-nav navbar-right">
+                {% if not session.logged_in %}
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url_for('login') }}">ログイン</a>
+                </li>
+                {% else %}
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url_for('logout') }}">ログアウト</a>
+                </li>
+                {% endif %}
+            </ul>
         </nav>
         {% for message in get_flashed_messages() %}
             <div class="alert alert-info" role="alert">
                 {{message}}
             </div>
         {% endfor %}
-        <div id="game"></div>
         <div class="blog-body">
             {% block body %}
             {% endblock %}

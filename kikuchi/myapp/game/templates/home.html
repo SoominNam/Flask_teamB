@@ -1,0 +1,26 @@
+{% extends "layout.html" %}
+{% block head %}
+{% endblock %}
+
+{% block body %}
+<a href="{{url_for('play')}}">Let's Play !</a>
+<h1>ランキング</h1>
+<table class="table">
+    <thead class="table-primary">
+        <tr>
+            <th scope="col">順位</th>
+            <th scope="col">Score</th>
+            <th scope="col">Player</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for score in scores %}
+        <tr>
+            <td>{{loop.index}}</td>
+            <td>{{score.score}}ms</td>
+            <td>{{score.player.name}}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+</table>
+{% endblock %}

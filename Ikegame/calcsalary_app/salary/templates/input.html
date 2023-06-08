@@ -1,0 +1,11 @@
+{% extends "layout.html" %}
+{% block body %}
+<form action="{{url_for("calc_routine")}}" method=post>
+<div class="input-number">
+    <label for="InputTitle">数値を入力してください</label>
+    <input type="text" class="form-control" id="InputTitle" name=input_number>
+    </div>
+
+    <button type="submit" class="btn btn-primary">計算する</button>
+    </form>
+{% endblock %}

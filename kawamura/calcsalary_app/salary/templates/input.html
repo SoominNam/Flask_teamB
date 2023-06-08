@@ -1,0 +1,29 @@
+<!doctype html>
+<title>給与計算</title>
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+
+<style>
+    input[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+</style>
+
+<div class="container">
+    {% for message in get_flashed_messages() %}
+    <div class="alert alert-info" role="alert">
+        {{message}}
+    </div>
+    {% endfor %}
+    <form action="{{url_for('login')}}" method=post>
+        <div class="form-group">
+            <label for="InputTitle">給与計算</label>
+            <input type="number" class="form-control" id="InputTitle" name="username">
+        </div>
+        <button type="submit" class="btn btn-primary">計算</button>
+    </form>
+</div>

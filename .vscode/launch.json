@@ -10,7 +10,11 @@
             "request": "launch",
             "module": "flask",
             "env": {
+<<<<<<< HEAD
                 "FLASK_APP": "nam/server.py",
+=======
+                "FLASK_APP": "/home/matcha-23training/projects/Flask_teamB/Ikegame/application/server.py",
+>>>>>>> origin/main
                 "FLASK_DEBUG": "1"
             },
             "args": [

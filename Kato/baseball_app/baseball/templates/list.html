@@ -7,15 +7,21 @@
             <th class="table-primary">背番号</th>
             <th class="table-primary">選手名</th>
             <th class="table-primary">詳細</th>
+            <th class="table-primary"></th>
         </tr>
     </thead>
 
     <tbody>       
         {% for player in playerList %}
         <tr>
-            <td>{{ player.number }}</td>    
-            <td>{{ player.name }}</td>    
-            <td>{{ player.text }}</td>    
+            <form action="{{ url_for('delete_player') }}" method="post">
+                <td>{{ player.number }}</td>    
+                <td>{{ player.name }}</td>    
+                <td>{{ player.text }}</td>    
+                <td style="text-align: center;">
+                    <button type="submit" class="btn btn-danger" name="button" value={{player.number}}>削除</button>
+                </td>    
+            </form>
         </tr>
         {% endfor %}
         {% else %}

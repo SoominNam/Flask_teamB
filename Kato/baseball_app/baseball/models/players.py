@@ -5,7 +5,7 @@ class Player(db.Model):
     __tablename__ = 'players'
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(50), unique=True)
-    number = db.Column(db.Integer)
+    number = db.Column(db.String(3))
     text = db.Column(db.Text)
     created_at = db.Column(db.DateTime)
 

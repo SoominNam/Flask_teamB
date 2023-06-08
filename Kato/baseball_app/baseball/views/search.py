@@ -5,22 +5,21 @@ from baseball.models.players  import Player
 
 @app.route('/result', methods=['GET', 'POST'])
 def search():
-    if request.method == 'POST':
-        if request.form["button"] == "search":
-            if not request.form["player_number"]:
-                flash("背番号を入力してください")
-                return redirect(url_for("index"))
-            elif int(request.form["player_number"]) > 100:
-                flash("99以下の番号を入力してください")
-                return redirect(url_for("index"))
+    if request.form["button"] == "search":
+        input_number = request.form["player_number"]          
+        if not input_number:
+            flash("背番号を入力してください")
+        elif input_number.isdecimal() == False:
+            flash("数値で入力してください")
+        elif int(input_number) > 99:
+            flash("99以下の番号を入力してください")
         else:
-            input_number = int(request.form["player_number"])
-            player = Player.query.filter_by(number=input_number)
+            player = Player.query.filter_by(number=input_number).first()
             if not player:
                 flash("該当選手がいません")
-                return render_template('index.html')
             else:
                 name = player.name
                 text = player.text
-            return render_template("result.html", name = name, text = text)
+                return render_template("result.html", name = str(name), text = str(text))
+    return redirect(url_for("main"))
         

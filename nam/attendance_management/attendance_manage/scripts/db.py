@@ -1,7 +1,6 @@
 from flask_script import Command
-from flask_blog import db
-from flask_blog.models.entries import Entry
-
+from attendance_manage import db
+from attendance_manage.models.attendance import Attendance
 class InitDB(Command):
     "create datebase"
 

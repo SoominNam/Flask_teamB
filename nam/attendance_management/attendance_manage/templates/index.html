@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>出勤簿</h1>
+    <p>前日の始業時間と終業時間を入力してください。（時間の記入例）</p>
+
+    <form action="{{url_for('input')}}" method="post">
+        社員番号：<input type="text" name="staff_num">
+        氏名：<input type="text" name="name">
+        始業時間：<input type="text" name="start_time">
+        終業時間：<input type="text" name="end_time">
+        備考：<input type="text" name="text">
+        <input type="submit" value="提出">
+    </form>
+    <br>
+    <div align="center">
+        <table border="1">
+            <tr>
+                <td>社員番号</td>
+                <td>氏名</td>
+                <td>始業時間</td>
+                <td>終業時間</td>
+                <td>登録時間</td>
+                <td>備考</td>
+            </tr>
+            {% for list in attendancelist %}
+            <tr>
+                <td>{{list.staff_num}}</td>
+                <td>{{list.name}}</td>
+                <td>{{list.start_time}}</td>
+                <td>{{list.end_time}}</td>
+                <td>{{list.date}}</td>
+                <td>{{list.text}}</td>
+            </tr>
+            {% endfor %}
+        </table>
+</div>
+</body>
+</html>

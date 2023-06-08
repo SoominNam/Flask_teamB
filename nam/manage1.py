@@ -1,6 +1,6 @@
 from flask_script import Manager
-from attendance_management import app
-from attendance_management.scripts.db import InitDB
+from attendance_manage import app
+from attendance_manage.scripts.db import InitDB
 
 if __name__ == "__main__":
     manager = Manager(app)

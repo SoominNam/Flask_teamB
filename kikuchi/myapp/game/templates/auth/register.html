@@ -1,0 +1,112 @@
+{% extends "layout.html" %}
+{% block head %}
+<script>
+    window.addEventListener("load", ()=>{
+        
+    })
+    const inputFirstData = (x) => {
+        document.getElementById(`form${x}`).hidden = true;
+        document.getElementById(`form${x+1}`).style.display = "block";
+    }
+    const selectedJob = () => {
+        let v = document.getElementById("jobType").value;
+        console.log(v)
+        if(Number(v) <= 5){
+            document.getElementById("jobDescription").style.display = "block"
+            document.getElementById("jobName").required = true
+            document.getElementById("jobSalary").required = true
+        }
+        else{
+            document.getElementById("jobDescription").style.display = "none"
+            document.getElementById("jobName").required = false
+            document.getElementById("jobSalary").required = false
+        }
+    }
+</script>
+{% endblock %}
+
+{% block body %}
+<form action="{{ url_for('register') }}" method="post">
+    <div id="form1">
+        <div class="form-group">
+            <label for="InputEmail">メールアドレス</label>
+            <input type="email" class="form-control" id="InputEmail" name="email" required>
+        </div>
+        <div class="form-group">
+            <label for="InputTitle">ユーザ名</label>
+            <input type="text" class="form-control" id="InputTitle" name="name" required>
+        </div>
+        <div class="form-group">
+            <label for="InputPassword">パスワード</label>
+            <input type="password" class="form-control" id="InputPassword" name="password" required>
+        </div>
+        <button type="button" class="btn btn-primary" onclick="inputFirstData(1)">次へ</button>
+    </div>
+    <div id="form2" style="display: none;">
+        <div class="form-group">
+            <label for="lastSchoolType">最終学歴を選択してください</label>
+            <select class="form-control" id="lastSchoolType" name="lastSchoolType" required>
+                <option value="nursery">保育園卒</option>
+                <option value="kindergarten">幼稚園卒</option>
+                <option value="elementary">小学校卒</option>
+                <option value="juniorhigh">中学校卒</option>
+                <option value="vocational">専門学校卒</option>
+                <option value="university">大学卒</option>
+                <option value="graduate">大学院卒</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="InputTitle">最後に卒業した学校を入力してください</label>
+            <input type="text" class="form-control" id="InputTitle" name="lastSchoolName" required>
+        </div>
+        <button type="button" class="btn btn-primary" onclick="inputFirstData(2)">次へ</button>
+    </div>
+    <div id="form3" style="display: none;">
+        <div class="form-group">
+            <label for="jobType">現在のご職業を教えてください</label>
+            <select class="form-control" id="jobType" name="jobType" onchange="selectedJob()" required>
+                <option value="0">上場企業役員</option>
+                <option value="1">上場企業一般社員</option>
+                <option value="3">非上場企業役員</option>
+                <option value="4">非上場企業一般社員</option>
+                <option value="5">個人事業主</option>
+                <option value="6">学生</option>
+                <option value="7">主婦</option>
+                <option value="8">無職</option>
+                <option value="9">その他</option>
+            </select>
+        </div>
+        <div id="jobDescription">
+            <div class="form-group">
+                <label for="jobName">会社名を入力してください</label>
+                <input type="text" class="form-control" id="jobName" name="jobName">
+            </div>
+            <div class="form-group">
+                <label for="jobSalary">想定年収を入力してください</label>
+                <div style="display: flex;">
+                    <input type="number" class="form-control" id="jobSalary" name="jobSalary">
+                    <span>万</span><span>円</span>
+                </div>
+            </div>
+        </div>
+        
+        <button type="button" class="btn btn-primary" onclick="inputFirstData(3)">次へ</button>
+    </div>
+    <div id="form4" style="display: none;">
+        <div class="form-group">
+            <label for="numType">社会保険番号またはマイナンバーを指定してください</label>
+            <select class="form-control" id="numType" name="numType" onchange="selectedNum()" required>
+                <option value="0">社会保険番号</option>
+                <option value="1">マイナンバー</option>
+            </select>
+        </div>
+        <div id="numDescription">
+            <div class="form-group">
+                <label for="myNumber">社会保険番号またはマイナンバーを入力してください</label>
+                <input type="number" class="form-control" id="myNumber" name="myNumber" required>
+            </div>
+        </div>
+        <button type="submit" class="btn btn-primary">登録</button>
+    </div>
+</form>
+{% endblock %}

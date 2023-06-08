@@ -1,0 +1,22 @@
+<!-- {% extends "layout.html" %}
+{% block body %}
+<ul class="list-group list-group-flush">
+<table >
+    <thead class="table">
+        <tr class="table-primary">
+            <th>楽曲名</th>
+        </tr>
+    </thead>
+{% for entry in result %}
+<tbody class="table">
+    <tr>
+        <td>{{ entry.music_name }}</td>
+    </tr>
+</tbody>
+{% else %}
+    登録がありません
+{% endfor %}
+</table>
+</ul>
+<a  class="btn btn-primary" href="{{url_for('show_input')}}">戻る</a>
+{% endblock %} -->

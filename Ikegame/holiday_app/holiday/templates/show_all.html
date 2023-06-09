@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+{% extends "layout.html" %}
+{% block body %}
+<table>
+    <tr class="table-primary">
+        <td>祝日</td>
+        <td>テキスト</td>
+    </tr>
+    {% for record in records %}
+    <tr>
+        <td>{{record.holi_date}}</td>
+        <td>{{record.holi_text}}</td>
+    </tr>
+    {% else %}
+    祝日がありません
+    {% endfor %}
+</table>
+<form action="{{url_for('input_')}}" method="get">
+    <button type="submit" class="btn btn-primary">戻る</button>
+</form>
+{% endblock %}

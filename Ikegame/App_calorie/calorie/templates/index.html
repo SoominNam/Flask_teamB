@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<head>
+</head>
+{% extends "layout.html" %}
+{% block body %}
+
+<p class="today-cal">今日の摂取カロリー: {{calorie_today}}kcal</p>
+<p class="today-price">今日の食費: {{price_today}}円</p>
+
+<form action="{{url_for('input_')}}" method=post>
+    <button type="submit" class="btn btn-primary">新規登録</button>
+</form>
+<br>
+<form action="{{url_for('manage')}}" method=post>
+    <button type="submit" class="btn btn-secondary" name="button" value="history">過去の履歴</button>
+    <button type="submit" class="btn btn-secondary" name="button" value="manage-menu">メニュー管理</button>
+</form>
+{% endblock %}

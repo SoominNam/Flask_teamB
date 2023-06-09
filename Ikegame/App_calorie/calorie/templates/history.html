@@ -1,0 +1,55 @@
+{% extends "layout.html" %}
+{% block body %}
+
+<table>
+    <tr class="table-primary">
+        <td>日付</td>
+        <td>メニュー</td>
+        <td>カロリー</td>
+        <td>価格</td>
+        <td>meal_id</td>
+        <td></td>
+    </tr>
+    
+    {% for row in history %}
+    <tr>
+        <td>{{row[0]}}</td>
+        <td>{{row[1]}}</td>
+        <td>{{row[2]}} kcal</td>
+        <td>{{row[3]}}円</td>
+        <td>{{row[4]}}</td>
+        <td>
+            <button class="btn btn-danger" data-toggle="modal" data-target="#delete-modal">削除</button>
+            <div class="modal fade" id="delete-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title" id="exampleModalLongTitle">削除</h5>
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                      </button>
+                    </div>
+                    <div class="modal-body">
+                      本当に削除しますか？
+                    </div>
+                    <div class="modal-footer">
+                      <form action="{{url_for('delete_meal')}}" method="post">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">キャンセル</button>
+                        <button type="submit" class="btn btn-danger" name="button" value="{{row[4]}}">削除</button>
+                      </form>
+                    </div>
+                  </div>
+                </div>
+              </div>
+        </td>
+    </tr>
+    {% else %}
+    祝日がありません
+    {% endfor %}
+</table>
+</form>
+<form action="{{url_for('index')}}" method="get">
+    <button type="submit" class="btn btn-primary">戻る</button>
+</form>
+
+{% endblock %}

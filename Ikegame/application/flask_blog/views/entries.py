@@ -2,11 +2,11 @@ from flask import request, redirect, url_for, render_template, flash, session
 from flask_blog import app
 from flask_blog import db
 from flask_blog.models.entries import Entry
+from flask_blog.views.views import login_required
 
 @app.route("/")
+@login_required
 def show_entries():
-    if not session.get("logged_in"):
-        return redirect(url_for("login"))
     entries = Entry.query.order_by(Entry.id.desc()).all()
     return render_template("entries/index.html",entries=entries)
 
@@ -40,8 +40,8 @@ def show_entry(id):
 def edit_entry(id):
     if not session.get("logged_in"):
         return redirect(url_for("login"))
-    entry = Entry.query.get(id)
-    return render_template("entries/edit.html",entry=entry)
+    ent = Entry.query.get(id)
+    return render_template("entries/edit.html",entry=ent)
 
 @app.route("/entries/<int:id>/update",methods=["POST"])
 def update_entry(id):

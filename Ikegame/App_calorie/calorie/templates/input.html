@@ -1,0 +1,13 @@
+{% extends "layout.html" %}
+{% block body %}
+<form action="{{url_for('add_meal')}}" method=post>
+    <select size="{{list_size}}" name="meal">
+        {% for opt in options %}
+        <option value="{{opt}}">{{opt}}</option>
+        {% endfor %}
+    </select>
+    <br>
+    <button type="submit" class="btn btn-secondary" name="button" value="take">摂取する</button>
+    <button type="submit" class="btn btn-secondary" name="button" value="back">戻る</button>
+</form>
+{% endblock %}

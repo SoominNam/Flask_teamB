@@ -10,7 +10,7 @@
             "request": "launch",
             "module": "flask",
             "env": {
-                "FLASK_APP": "/home/matcha-23training/projects/Flask_teamB/Ikegame/application/server.py",
+                "FLASK_APP": "/home/matcha-23training/projects/Flask_teamB/Ikegame/App_calorie/server.py",
                 "FLASK_DEBUG": "1"
             },
             "args": [

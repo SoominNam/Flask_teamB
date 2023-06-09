@@ -1,0 +1,20 @@
+{% extends "layout.html" %}
+{% block body %}
+<form action="{{url_for("input_")}}" method=post>
+    <div class="form-group">
+        <label for="InputHoliDate">祝日　日付</label>
+        <input type="date" class="form-control" id="InputHoliDate" name=holi_date>
+    </div>    
+    <div class="form-group">
+        <label for="InputHoliText">祝日　テキスト</label>
+        <input type="text" class="form-control" id="InputHoliText" name=holi_text>
+    </div>
+    <button type="submit" class="btn btn-primary" name="button" value="insert_update">新規登録・更新</button>
+    <button type="submit" class="btn btn-danger" name="button" value="delete">削除</button>
+    <br>
+    <br>
+</form>
+<form action="{{url_for('show_records')}}" method=post>
+    <button type="submit" class="btn btn-secondary">一覧出力</button>
+</form>
+{% endblock %}

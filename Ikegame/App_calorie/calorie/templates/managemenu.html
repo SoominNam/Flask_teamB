@@ -1,0 +1,23 @@
+{% extends "layout.html" %}
+{% block body %}
+<form action="{{url_for('choose_management')}}" method=post>
+    <button type="submit" class="btn btn-primary" name="button" value="add-menu">メニュー追加</button>
+    <button type="submit" class="btn btn-secondary" name="button" value="edit-menu">編集する</button>
+</form>
+
+<table>
+    <tr class="table-primary">
+        <td>料理名</td>
+        <td>カロリー</td>
+        <td>価格</td>
+    </tr>
+    {% for row in menus %}
+    <tr>
+        <td>{{row.name}}</td>
+        <td>{{row.calorie}}kcal</td>
+        <td>{{row.price}}円</td>
+    </tr>
+    {% else %}
+    {% endfor %}
+</table>
+{% endblock %}

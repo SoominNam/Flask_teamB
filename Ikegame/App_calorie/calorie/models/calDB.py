@@ -4,7 +4,7 @@ from calorie import db
 
 class MenuMaster(db.Model):
     __tablename__ = "menumaster"
-    menu_id = db.Column(db.Integer,unique=True,primary_key=True)
+    menu_id = db.Column(db.Integer,unique=True,primary_key=True,autoincrement=True)
     name = db.Column(db.Text)
     calorie = db.Column(db.Float)
     price = db.Column(db.Integer)

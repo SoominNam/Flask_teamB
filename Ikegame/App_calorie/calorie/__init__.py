@@ -6,4 +6,4 @@ app.config.from_object("calorie.config")
 
 db = SQLAlchemy(app)
 
-from calorie.views import views
+from calorie.views import views,meal,menu

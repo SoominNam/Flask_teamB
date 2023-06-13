@@ -1,0 +1,13 @@
+{% extends "layout.html" %}
+{% block body %}
+<form action="{{url_for('add_menu')}}" method=post>
+    <label for="InputTitle">料理名</label>
+    <input type="text" class="form-control" id="InputTitle" name=name>
+    <label for="InputTitle">カロリー</label>
+    <input type="text" class="form-control" id="InputTitle" name=calorie><p> kcal</p>
+    <label for="InputTitle">価格</label>
+    <input type="text" class="form-control" id="InputTitle" name=price><p>円</p>
+    <button type="submit" class="btn btn-primary" name="button" value="add">追加する</button>
+    <button type="submit" class="btn btn-secondary" name="button" value="back">戻る</button>
+</form>
+{% endblock %}

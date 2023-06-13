@@ -19,8 +19,8 @@
         <td>{{row[3]}}円</td>
         <td>{{row[4]}}</td>
         <td>
-            <button class="btn btn-danger" data-toggle="modal" data-target="#delete-modal">削除</button>
-            <div class="modal fade" id="delete-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+            <button class="btn btn-danger" data-toggle="modal" data-target="#delete-modal{{row[0],row[4]}}">削除</button>
+            <div class="modal fade" id="delete-modal{{row[0],row[4]}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
                 <div class="modal-dialog" role="document">
                   <div class="modal-content">
                     <div class="modal-header">
@@ -35,7 +35,7 @@
                     <div class="modal-footer">
                       <form action="{{url_for('delete_meal')}}" method="post">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">キャンセル</button>
-                        <button type="submit" class="btn btn-danger" name="button" value="{{row[4]}}">削除</button>
+                        <button type="submit" class="btn btn-danger" name="button" value="{{row[0],row[4]}}">削除</button>
                       </form>
                     </div>
                   </div>

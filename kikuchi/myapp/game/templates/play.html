@@ -1,0 +1,29 @@
+{% extends "layout.html" %}
+{% block head %}
+<script>
+    window.addEventListener("load", ()=>{
+        playGame()
+    })
+</script>
+{% endblock %}
+
+{% block body %}
+<div class="main" style="display: flex;">
+    <div id="game"></div>
+    <div id="contents">
+        <form id="pushScore" action="{{url_for('score')}}" method="post" style="display: none;">
+            <div class="form-group">
+                <label for="resultText"><h3>ゆあ～すこあ</h3></label>
+                <h4 id="resultText"></h4>
+                <input type="hidden" class="form-control" id="InputScore" name="score" value="-1" required>
+            </div>
+            {% if session.logged_in %}
+                <button type="submit" class="btn btn-primary">結果をランキングに登録</button>
+            {% endif %}
+        </form>
+        
+        <a id="retry" href="{{url_for('play')}}" class='btn btn-primary' style="display: none;">リトライ</a>
+    </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,26 @@
+{% extends "layout.html" %}
+{% block body %}
+<ul class="list-group list-group-flush">
+<table >
+    <thead class="table">
+        <tr class="table-primary">
+            <th>アーティスト名</th>
+            <th>アルバム名</th>
+            <th>url</th>
+        </tr>
+    </thead>
+{% for entry in results %}
+<tbody class="table">
+    <tr>
+        <td>{{ entry }}</td>
+        <td>{{ album[loop.index0]}}</td>
+        <td><a href="{{urls[loop.index0]}}">{{urls[loop.index0]}}</a></td>
+    </tr>
+</tbody>
+{% else %}
+    登録がありません
+{% endfor %}
+</table>
+</ul>
+<a  class="btn btn-primary" href="{{url_for('show_input')}}">戻る</a>
+{% endblock %}

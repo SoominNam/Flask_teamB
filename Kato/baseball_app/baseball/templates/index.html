@@ -1,0 +1,23 @@
+{% extends "layout.html" %}
+{% block body %}
+    <form action="{{ url_for('search') }}" method="post">
+        <div class="form-group">
+            <label for="Number">背番号</label>
+            <input type="text" class="form-control" id="InputNumber" name="player_number">
+        </div>
+
+        <button type="submit" class="btn btn-primary" name="button" value="search">探す</button>
+    </form>
+
+    <br>
+
+    <div style="display: flex">
+        <form action="{{ url_for('show_list') }}" method="post">
+            <button type="submit" class="btn btn-secondary">一覧表示</button>
+        </form>
+
+        <form action="{{ url_for('add_player') }}" method="get" style="margin-left: 20px;">
+            <button type="submit" class="btn btn-secondary">新規作成</button>
+        </form>
+    </div>
+{% endblock %}

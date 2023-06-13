@@ -1,0 +1,20 @@
+<!doctype html>
+<title>祝日マスタ管理</title>
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+
+{% extends "layout.html" %}
+{% block body %}
+<div class="container">
+    <form action="{{url_for('update_delete_entry')}}" method=post>
+        <div class="form-group">
+            <label for="InputTitle">処理結果</label>
+            <p>{{ entry.holi_date }} {{ entry.holi_text }}が{{ result }}されました。</p>
+        </div>
+        <a  class="btn btn-primary" href="{{url_for('show_input')}}">戻る</a>
+    </form>
+</div>
+{% endblock %}

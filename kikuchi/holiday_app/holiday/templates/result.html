@@ -1,0 +1,8 @@
+
+{% extends "layout.html" %}
+{% block body %}
+<h1>処理結果</h1>
+{{message}}
+<br><br>
+<a href="{{ url_for('input') }}" class="btn btn-primary">戻る</a>
+{% endblock %}

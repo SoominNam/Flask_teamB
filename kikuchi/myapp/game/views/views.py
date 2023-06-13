@@ -1,32 +1,45 @@
 from flask import request, redirect, url_for, render_template, flash, session
 from game import app
+from game import db
+from game.views.auth import login_requied
+from game.models.players import Player
+from game.models.scores import Score
 
 @app.route("/")
 def index():
-    return render_template("index.html")
+    scores = Score.query.order_by(Score.score.asc()).limit(50).all()
+    return render_template("home.html", scores=scores)
 
-@app.route("/output", methods=["GET","POST"])
-def output():
+
+@app.route("/play")
+def play():
+    return render_template("play.html")
+
+@app.route("/score", methods=["GET","POST"])
+@login_requied
+def score():
     if request.method == "POST":
-        if not request.form["salary"]:
-            flash("入力しろください。__(:3」∠)__")
-
-        elif not request.form["salary"].isdecimal():
-            flash("は？なにしたん？")
-        
-        elif int(request.form["salary"]) < 0:
-            flash("正数入れろやこら。__(:3」∠)__")
-
-        elif len(request.form["salary"]) > 10:
-            flash("最大9,999,999,999までしか入力できないんよ。すまんね。__(:3」∠)__")
-
+        player = Player.query.filter(Player.email == session.get("logged_in")).first()
+        if not player:
+            flash("ユーザー情報が不明です")
+            return redirect(url_for("index"))
         else:
-            salary = int(request.form["salary"])
-            tax = salary * 0.1
-            if salary>=1000000:
-                tax += (salary-1000000) * 0.1
-            tax = int(tax)
-            payment = salary-tax
-            return render_template("output.html", salary="{:,}".format(salary), payment="{:,}".format(payment), tax="{:,}".format(tax))
-        
+            rank = False
+            score = Score(
+                score = int(request.form["score"]),
+                playerid = player.id
+            )
+            try:
+                db.session.add(score)
+                db.session.commit()
+                score = Score.query.filter(Score.score <= score.score).all()
+                flash("登録できました")
+            except Exception as e:
+                print(e)
+                flash("登録できませんでした")
+                return redirect(url_for("play"))
+
+            return render_template("score.html", rank = len(score))
+
     return redirect(url_for("index"))
+    

@@ -1,0 +1,24 @@
+<!-- {% extends "layout.html" %}
+{% block body %}
+<ul class="list-group list-group-flush">
+<table >
+    <thead class="table">
+        <tr class="table-primary">
+            <th>アーティスト名</th>
+            <th>楽曲名</th>
+        </tr>
+    </thead>
+{% for entry in entries %}
+<tbody class="table">
+    <tr>
+        <td>{{ entry.band_name }}</td>
+        <td>{{ entry.music_name }}</td>
+    </tr>
+</tbody>
+{% else %}
+    投稿がありません
+{% endfor %}
+</table>
+</ul>
+<a  class="btn btn-primary" href="{{url_for('show_input')}}">戻る</a>
+{% endblock %} -->
